@@ -1,0 +1,38 @@
+
+
+
+AREA sum
+EXPORT _main
+ALIGN
+ENTRY
+_main PROC
+
+MOV R0,#5;
+MOV R1,#6;
+MOV R2,#3;
+MOV R3,#4;
+PUSH{RO,R1};
+MOVS R1,#2;
+MOVS R0,#1;
+BL SUM6
+
+stop B stop
+ENDP
+
+Sum6 PROC
+Push {R4,R5,R6,R7,LR};		//Push registers in stack
+STR R7,[R0];			
+LDR R4,[SP,#16];		
+LDR R5,[SP,#20]; 		
+LDR R6,[SP,#24];		
+ADD R7,R7,R1;		
+ADD R7,R7,R2;		
+ADD R7,R7,R3; 		
+ADD R7,R7,R4; 		
+ADD R7,R7,R5; 		
+ADD R7,R7,R6; 		
+MOV R0,R7			
+POR {R4,R5,R6,R7,PC};		
+
+ENDP
+END
